@@ -90,4 +90,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function ratingReactions()
+    {
+        return $this->hasMany(RatingReaction::class);
+    }
+
 }

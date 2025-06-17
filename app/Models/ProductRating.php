@@ -23,4 +23,21 @@ class ProductRating extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+
+    public function reactions()
+    {
+        return $this->hasMany(RatingReaction::class);
+    }
+
+    public function likes()
+    {
+        return $this->reactions()->where('type', 'like');
+    }
+
+    public function dislikes()
+    {
+        return $this->reactions()->where('type', 'dislike');
+    }
+
 }

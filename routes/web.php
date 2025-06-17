@@ -34,6 +34,11 @@ Route::post('/get-order-summery', [CartController::class, 'getOrderSummery'])->n
 Route::post('/apply-Discount', [CartController::class, 'applyDiscount'])->name('front.applyDiscount');
 Route::post('/remove-discount', [CartController::class, 'removeCoupon'])->name('front.removeDiscount');
 
+//apply ratting
+Route::post('/save-rating/{productId}',[\App\Http\Controllers\ShopController::class, 'saveRating'])->name('front.saveRating');
+Route::get('/product/{id}/ratings', [\App\Http\Controllers\ShopController::class, 'getProductRatings'])->name('front.getRatings');
+
+
 // Routes for user account
 Route::prefix('account')->group(function () {
     // Guest routes (accessible only when not authenticated)
@@ -72,7 +77,7 @@ Route::prefix('account')->group(function () {
             ->name('wishlist.remove');
 
         // Route for Rating
-        Route::post('/save-rating/{productId}', [\App\Http\Controllers\ShopController::class, 'saveRating'])->name('front.saveRating');
+//        Route::post('/save-rating/{productId}', [\App\Http\Controllers\ShopController::class, 'saveRating'])->name('front.saveRating');
 
         // Route for displaying a product with ratings
         Route::get('/product/{id}', [\App\Http\Controllers\ShopController::class, 'showProduct'])->name('front.showProduct');

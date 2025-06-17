@@ -50,5 +50,9 @@ class Product extends Model
     }
 
 
+    public function product_ratings()
+    {
+        return $this->hasMany(ProductRating::class);
+    }
 }
 
